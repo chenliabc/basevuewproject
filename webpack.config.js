@@ -178,6 +178,7 @@ module.exports = (env, args) => {
       json.minimizer = [new CssMinimizerPlugin()];
 
       json.splitChunks = {
+        chunks: 'all',
         cacheGroups: {
           vue: {
             test: /[\\/]node_modules[\\/]vue(.*)?[\\/]/,
