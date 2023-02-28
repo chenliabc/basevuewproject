@@ -30,7 +30,8 @@ module.exports = (env, args) => {
         },
         {
           oneOf: [
-            { test: /\.css$/, use: [devFlag ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'] },
+            { test: /\.css$/, use: [devFlag ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader','postcss-loader'] },
+            { test: /\.scss$/, use: [devFlag ? 'vue-style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader','sass-loader',  { loader: 'sass-resources-loader', options: {resources: path.join(__dirname, "./src/css/common.scss")}}] },
             { test: /\.(png|svg|jpg|jpeg|gif|webp)$/, type: 'asset' },
             { test: /\.(woff|woff2|eot|ttf|otf)$/, type: 'asset/resource' },
             {
@@ -105,8 +106,8 @@ module.exports = (env, args) => {
       new CopyPlugin({
         patterns: [
           {
-            from: path.join(__dirname, "./public"),
-            to: path.join(__dirname, "./dist"),
+            from: path.join(__dirname, "src/public"),
+            to: path.join(__dirname, "dist/public"),
             toType: "dir",
             noErrorOnMissing: true,
             globOptions: {

@@ -1,0 +1,11 @@
+@function pxtorem($px){
+  @return $px / 16 * 1rem ;
+}
+
+@function pxtovw($px){
+  @return $px * 100vw / 1920 ;
+}
+
+@function pxtovh($px){
+  @return $px * 100vh / 1080 ;
+}
